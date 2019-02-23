@@ -82,7 +82,9 @@ router.post('/login',(req,res)=>{
                 /* res.json({
                     token: token
                 }) */
-                    res.redirect(`/users/profile?token=${token}`);
+                    res.cookie('jwt', token );
+                   // res.json({ success: true, token: 'JWT ' + token });
+                   res.redirect(`/users/profile`);
                   //res.redirect('/api/auth/profile');
                 }
             )

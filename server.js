@@ -18,6 +18,15 @@ app.use(passport.initialize());
 // config for jwt strategy
 require('./strategies/jsonwtStrategies')(passport);
 
+const cookieExtractor = function (request) {
+    var token = null;
+    console.log("Here");
+    if (req && req.cookies) {
+      token = req.cookies['jwt'];
+      console.log(token);
+    }
+    return token;
+  };
 
 // Connect to MongoDB
 mongoose.connect('mongodb://vsr:Hello12345@ds155823.mlab.com:55823/worshiapp', {useNewUrlParser: true});
