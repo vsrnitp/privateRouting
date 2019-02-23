@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('./routes/api/auth');
+const profile = require('./routes/users/profile');
 const app = express();
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
@@ -15,7 +16,7 @@ app.use(bodyparser.json());
 app.use(passport.initialize());
 
 // config for jwt strategy
-require('./strategies/jsonwtStrategy')(passport)
+require('./strategies/jsonwtStrategies')(passport);
 
 
 // Connect to MongoDB
@@ -34,5 +35,6 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/auth',auth);
+app.use('/users',  passport.authenticate('jwt', { session : false }), profile );
 
 app.listen(8080,console.log('App working fine'));

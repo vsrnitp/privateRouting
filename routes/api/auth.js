@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jsonwt = require('jsonwebtoken');
 const passport = require('passport');
 const regData = require('../../models/userRegData');
-const key = require('../../setup/myurl');
+const key = require('../../setup/myUrl');
 
 router.get('/register',(req,res)=>{
     //res.send("Get route for registration");
@@ -79,15 +79,13 @@ router.post('/login',(req,res)=>{
                 }
                 ,(err, token) => {
                 //res.json({token});
-                 
-
-               
-                 res.redirect(`/api/auth/profile`)
+                /* res.json({
+                    token: token
+                }) */
+                    res.redirect(`/users/profile?token=${token}`);
                   //res.redirect('/api/auth/profile');
                 }
             )
-
-
             }
             else{
                 res.json({passError:'incorrect password'})
@@ -100,7 +98,7 @@ router.post('/login',(req,res)=>{
 })
 
 // private route for profile
-router.get('/profile',passport.authenticate('jwt', { session: false }),
+/* router.get('/profile',passport.authenticate('jwt', { session: false }),
 (req,res) => {
 
 res.json({
@@ -111,7 +109,7 @@ res.json({
 })
 //console.log(k);
 }
-);
+); */
 
 
 
