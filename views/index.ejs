@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- self js for function -->
+<script src="../resources/jsfun.js"></script>
+<script>
+$(document).ready(function(){
+    $("#themeBtnDark").click(function(){
+         $('body').css("background-color","black");
+         $('body').css("color","white");
+         $('#themeBtnDark').css("display","none");
+         $("#themeBtnWhite").css("display","block");
+});
+});
+
+$(document).ready(function(){
+    $("#themeBtnWhite").click(function(){
+         $('body').css("background-color","white");
+         $('body').css("color","black");
+         $('#themeBtnDark').css("display","block");
+         $("#themeBtnWhite").css("display","none");
+ });
+});
+
+</script>
+
+    <title>worshiApp::Home</title>
+
+    <style>
+    #themeBtnWhite{
+        display:none;
+        float: right;
+    }
+    #themeBtnDark{
+        float: right;
+    }
+    .logreg{
+        margin-top:5%;
+        margin-left: 35%;
+        text-align: center;
+    }
+    </style>
+</head>
+<body id="mainBody" style="background-color:black; color:white;">
+    <div class="container">
+        <div class="row">
+             <div class="col-sm-3 col-xs-3">
+
+             </div>
+
+             <div class="col-sm-6 col-xs-6" style="margin-top:10%;">
+                    <h1 style="text-align:center;">welcome to worshiApp!</h1>
+                    <h3 style="text-align:center;">(one stop shop for all your rituals)</h3>
+                   <h3 style="text-align:center;">Login Here...</h3>
+                    <form action="/api/auth/login" method="POST">
+                        <div class="form-group">
+                          <label for="email">Email address:</label>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="pwd">Password:</label>
+                          <input type="password" class="form-control" id="pwd" name="password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-default">Submit</button>
+                      </form>
+                   <a href="http://localhost:8080/api/auth/register"> <button class="btn logreg" style="float:left;">Register(New User)</button></a>
+                   
+             </div>
+
+             <div class="col-sm-3 col-xs-3" style="margin-top:7%;">
+                <button id="themeBtnDark" class="btn">DarkTheme</button>
+                <button id="themeBtnWhite" class="btn">WhiteTheme</button>
+             </div>
+        </div>
+    </div>
+   
+</body>
+</html>
