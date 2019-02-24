@@ -20,7 +20,7 @@ require('./strategies/jsonwtStrategies')(passport);
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb://vsr:Hello12345@ds155823.mlab.com:55823/worshiapp', {useNewUrlParser: true});
+mongoose.connect('mongodb://****<username>****:****<password>****@ds155823.mlab.com:55823/worshiapp', {useNewUrlParser: true});
 mongoose.connection.once('open', function(){
   console.log('Conection has been made!');
 }).on('error', function(error){
